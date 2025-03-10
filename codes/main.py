@@ -4,20 +4,8 @@ from tkinter import *
 import directory
 
 
-def english_alphabet():
-    address = directory.add()
-    info = {}
-    info['name'] = 'english_alphabet'
-    info['img_temp'] = address + directory.English_alphabet_temp_img
-    info['database_Mine'] = address + directory.my_English_alphabet_dataset
-    info['h5'] = address + directory.hand_write_English_alphabet
-    root.destroy()
-    a = gui(info)
-    a.start()
-
-
 def persian_alphabet():
-    address = directory.add()
+    address = '.'
     info = {}
     info['name'] = 'persian_alphabet'
     info['img_temp'] = address + directory.persian_alphabet_temp_img
@@ -29,7 +17,7 @@ def persian_alphabet():
 
 
 def persian_number():
-    address = directory.add()
+    address = '.'
     info = {}
     info['name'] = 'persian_number'
     info['img_temp'] = address + directory.persian_number_temp_img
@@ -49,18 +37,6 @@ root.resizable(width=False, height=False)  # user cant resize window
 
 main_frame = Frame(root, bg=color2, pady=40)
 main_frame.place(relwidth=1, relheight=1)
-
-b1 = Button(
-    main_frame,
-    background=color2,
-    foreground=color1,
-    width=15,
-    height=2,
-    cursor='hand2',
-    text='English alphabet',
-    font=('Arial', 16, 'bold'),
-    command=english_alphabet,
-)
 
 b2 = Button(
     main_frame,

@@ -30,9 +30,6 @@ class SaveModelCallback(tf.keras.callbacks.Callback):
             a[0] = self.best_val_loss
             a[1] = self.best_val_accuracy
 
-            with open(address + directory.temp_txt, 'a+') as f:
-                f.write(f'val_accuracy: {self.best_val_accuracy:.4f}\nval_loss: {self.best_val_loss:.4f}\n---------------------------------\n')
-
             # Save the model
             self.model.save(self.filepath, overwrite=True)
 
@@ -41,8 +38,8 @@ class SaveModelCallback(tf.keras.callbacks.Callback):
 
 a = [100, -100]
 
-address = directory.add()
-train_data = pd.read_csv(address + directory.persian_alphabet_train_img_csv)
+address = '.'
+train_data = pd.read_csv(address + directory.persian_number_train_img_csv)
 
 for j in range(5):
     train_data = train_data.sample(frac=1)  # shuffle train_data
@@ -59,7 +56,7 @@ model = keras.Sequential([
     Dense(units=200, activation='relu'),
     Dropout(0.2),  # Add dropout layer with a rate of 0.2 (20%)
 
-    Dense(units=32, activation='softmax'),
+    Dense(units=10, activation='softmax'),
 ])
 
 early_stopping = EarlyStopping(
@@ -71,6 +68,6 @@ early_stopping = EarlyStopping(
 model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 # Create an instance of the custom callback
-save_model_callback = SaveModelCallback(filepath=address + directory.hand_write_persian_alphabet, val_loss=a[0], val_accuracy=a[1])
+save_model_callback = SaveModelCallback(filepath=address + directory.hand_write_persian_number, val_loss=a[0], val_accuracy=a[1])
 
 model.fit(x_train, y_train, batch_size=5, epochs=50, validation_split=0.1, callbacks=[early_stopping, save_model_callback], shuffle=True)

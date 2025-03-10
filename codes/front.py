@@ -158,7 +158,7 @@ class gui:
 
         self.check_save = True  # make saving new image possible
 
-        ctypes.windll.user32.SetProcessDPIAware()
+        # ctypes.windll.user32.SetProcessDPIAware()
         # Get the bounding box of all items with the tag 'drawing'
         bbox = self.cv.bbox('drawing')
         if not bbox:  # Check if the bounding box is not None
@@ -215,7 +215,7 @@ class gui:
         except:
             pass
         # Make the application DPI aware
-        ctypes.windll.user32.SetProcessDPIAware()
+        # ctypes.windll.user32.SetProcessDPIAware()
 
         self.drawing_complete = True
         self.center_drawing()

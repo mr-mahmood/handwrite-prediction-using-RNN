@@ -5,6 +5,7 @@ import os
 # My own codes import
 import normalize_image as ni
 import directory
+
 persian_alphabet = {
     26: 'آ', 27: 'ب', 28: 'پ', 29: 'ت', 30: 'ث', 31: 'ج', 32: 'چ', 33: 'ح', 34: 'خ',
     35: 'د', 36: 'ذ', 37: 'ر', 38: 'ز', 39: 'ژ', 40: 'س', 41: 'ش', 42: 'ص', 43: 'ض',
